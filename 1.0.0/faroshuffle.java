@@ -4,6 +4,7 @@
 class faroshuffle {
 
 	static String[] deck = new String[52];
+	static String[] deckbis = new String[52];
 	
 	static String[] faroShuffleA (String[] auxdeck){
 		int aux;
@@ -16,7 +17,11 @@ class faroshuffle {
 	}
 
 	static String[] farosShuffleA (String[] auxdeck, int times){
-	
+		deckbis = copyDeck(deckbis, auxdeck);
+		for(int i = 0; i < times; i++){
+			deck = faroShuffleA(deckbis);
+			deckbis = copyDeck(deckbis, deck);
+		}	
 		return deck;
 	}
 	
@@ -31,7 +36,11 @@ class faroshuffle {
 	}
 
 	static String[] farosShuffleB (String[] auxdeck, int times){
-	
+		deckbis = copyDeck(deckbis, auxdeck);
+		for(int i = 0; i < times; i++){
+			deck = faroShuffleB(deckbis);
+			deckbis = copyDeck(deckbis, deck);
+		}	
 		return deck;
 	}
 	
@@ -52,6 +61,19 @@ class faroshuffle {
 
 	static String[] antiFarosB (String[] auxdeck, int times){
 	
+		return deck;
+	}
+	
+	static String[] copyDeck(String[] deck, String[] deckbis){
+		if (deck.length == deckbis.length){
+			for (int i = 0; i < deck.length; i++){
+				deck[i] = deckbis[i];
+			}
+		} else {
+			for (int i = 0; i < deck.length; i++){
+				deck[i] = "Error";
+			}
+		}
 		return deck;
 	}
 	
