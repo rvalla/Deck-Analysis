@@ -36,13 +36,10 @@ class deckconsole {
 		
 		print(d.deckbysuit);
 		System.out.println();
-		print(f.faroShuffleB(d.deckbysuit));
-		System.out.println();
-		print(f.farosShuffleB(d.deckbysuit, 1));
-		System.out.println();
-		print(f.farosShuffleB(d.deckbysuit, 2));
-		System.out.println();
 		print(f.farosShuffleB(d.deckbysuit, 3));
+		System.out.println();
+		print(f.antiFarosB(f.farosShuffleB(d.deckbysuit, 3), 3));
+		System.out.println();
 		
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
