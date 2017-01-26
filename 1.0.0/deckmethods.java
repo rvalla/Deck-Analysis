@@ -10,43 +10,17 @@ class deckmethods {
 	static String[] deck = new String[52];
 	static String[] suits = {" Cor", " Dia", " Pic", " Tre"};
 	
-	public static void deckmethods() {
-		
-		deckbysuit = bySuit();
-		deckbyorder = byOrder();
-		deckbymirror = byMirror();
-	
-	}
-	
-	/*static void ordenarBaraja(String[] baraja, int[] datos){
-	
-		if (datos[1] == 1){
-			for (int i = 0; i < 52; i++){
-				int aux = datos[0]*(i+1)%52 - 1;
-				if (aux < 0) {
-					aux = 51;
+	static String[] getCoprimeDeck(String[] auxdeck, int coprime){
+		int auxindex;
+		for (int i = 0; i < 52; i++){
+				auxindex = coprime*(i+1)%52 - 1;
+				if (auxindex < 0) {
+					auxindex = 51;
 				}
-				baraja[aux] = deckbyorder[i];
-			}
-		} else if (datos[1] == 2){
-			for (int i = 0; i < 52; i++){
-				int aux = datos[0]*(i+1)%52 - 1;
-				if (aux < 0) {
-					aux = 51;
-				}
-				baraja[aux] = deckbysuit[i];
-			}
-		} else if (datos[1] == 3){
-			for (int i = 0; i < 52; i++){
-				int aux = datos[0]*(i+1)%52 - 1;
-				if (aux < 0) {
-					aux = 51;
-				}
-				baraja[aux] = deckbymirror[i];
-			}
+				deck[auxindex] = auxdeck[i];
 		}
-	
-	}*/
+		return deck;
+	}
 	
 	static String[] bySuit (){
 		String[] auxdeck = new String[52];
@@ -84,8 +58,11 @@ class deckmethods {
 		return auxdeck;	
 	}
 	
-	static void startDecks (){
+	static void startDecks() {
 		
+		deckbysuit = bySuit();
+		deckbyorder = byOrder();
+		deckbymirror = byMirror();
 	
 	}
 	

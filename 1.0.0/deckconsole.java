@@ -31,7 +31,7 @@ class deckconsole {
 	public static void deckconsole() throws Exception {
 	
 		d = new deckmethods();
-		d.deckmethods();
+		d.startDecks();
 		f = new faroshuffle();
 		
 		InputStreamReader isr = new InputStreamReader(System.in);
