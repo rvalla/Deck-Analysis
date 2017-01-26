@@ -1,9 +1,7 @@
-/*//////////////////////////////////////////////////////////
-				Deck-Analysis - Rodrigo Valla
-	Java console program to evaluate possible orders of
-	the cards at the deck and its behavior with de faro
-	perfect shuffle.
-//////////////////////////////////////////////////////////*/
+//Deck-Analysis - Rodrigo Valla
+//Java console program to evaluate possible orders of
+//the cards at the deck and its behavior with de faro
+//perfect shuffle.
 
 import java.io.*;
 
@@ -25,7 +23,7 @@ class deckconsole {
 		System.out.println("números (As de corazones, As de diamate, As de picas, As de");
 		System.out.println("trébol, 2 de corazones, etc) utilizando el 7 como factor.");
 		System.out.println();
-		
+	
 		deckconsole();
 			
 	}
@@ -33,9 +31,8 @@ class deckconsole {
 	public static void deckconsole() throws Exception {
 	
 		d = new deckmethods();
+		d.deckmethods();
 		f = new faroshuffle();
-		
-		print(d.deckbyorder);
 		
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);

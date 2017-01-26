@@ -1,7 +1,5 @@
-/*//////////////////////////////////////////////////////////
-		Methods to represent the behavior of the deck
-		with de 'Faro shuffle'
-//////////////////////////////////////////////////////////*/
+//Methods to represent the behavior of the deck
+//with de 'Faro shuffle'
 
 import java.io.*;
 

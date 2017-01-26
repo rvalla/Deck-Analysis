@@ -1,18 +1,24 @@
-/*//////////////////////////////////////////////////////////
-	Methods to order and evaluate a deck of cards
-//////////////////////////////////////////////////////////*/
+//Methods to order and evaluate a deck of cards
 
 import java.io.*;
 
 class deckmethods {
 
-	static String[] deckbysuit = bysuit();
-	static String[] deckbyorder = byorder();
-	static String[] deckbymirror = bymirror();
+	static String[] deckbysuit;
+	static String[] deckbyorder;
+	static String[] deckbymirror;
 	static String[] deck = new String[52];
 	static String[] suits = {" Cor", " Dia", " Pic", " Tre"};
 	
-	static void ordenarBaraja(String[] baraja, int[] datos){
+	public static void deckmethods() {
+		
+		deckbysuit = bySuit();
+		deckbyorder = byOrder();
+		deckbymirror = byMirror();
+	
+	}
+	
+	/*static void ordenarBaraja(String[] baraja, int[] datos){
 	
 		if (datos[1] == 1){
 			for (int i = 0; i < 52; i++){
@@ -40,9 +46,9 @@ class deckmethods {
 			}
 		}
 	
-	}
+	}*/
 	
-	static String[] bysuit (){
+	static String[] bySuit (){
 		String[] auxdeck = new String[52];
 		for (int i = 0; i < 4; i++){	
 			for (int j = 0; j < 13; j++){
@@ -52,7 +58,7 @@ class deckmethods {
 		return auxdeck;	
 	}
 	
-	static String[] byorder (){
+	static String[] byOrder (){
 		String[] auxdeck = new String[52];
 		for (int i = 0; i < 13; i++){	
 			for (int j = 0; j < 4; j++){
@@ -62,7 +68,7 @@ class deckmethods {
 		return auxdeck;	
 	}
 	
-	static String[] bymirror (){
+	static String[] byMirror (){
 		String[] auxdeck = new String[52];
 		for (int i = 0; i < 4; i++){	
 			if (i < 2){
@@ -76,6 +82,11 @@ class deckmethods {
 			}
 		}
 		return auxdeck;	
+	}
+	
+	static void startDecks (){
+		
+	
 	}
 	
 }
