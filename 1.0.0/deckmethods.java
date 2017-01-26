@@ -1,6 +1,4 @@
-//Methods to order and evaluate a deck of cards
-
-import java.io.*;
+//Methods to order, reorder or evaluate a deck of cards
 
 class deckmethods {
 
@@ -8,7 +6,7 @@ class deckmethods {
 	static String[] deckbyorder;
 	static String[] deckbymirror;
 	static String[] deck = new String[52];
-	static String[] suits = {" Cor", " Dia", " Pic", " Tre"};
+	static String[] suits = {" Hea", " Dia", " Spa", " Clu"};
 	
 	static String[] getCoprimeDeck(String[] auxdeck, int coprime){
 		int auxindex;
@@ -20,6 +18,10 @@ class deckmethods {
 				deck[auxindex] = auxdeck[i];
 		}
 		return deck;
+	}
+	
+	static String getCard(String[] auxdeck, int position){
+		return auxdeck[position];
 	}
 	
 	static String[] bySuit (){

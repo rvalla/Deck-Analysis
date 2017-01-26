@@ -34,6 +34,12 @@ class deckconsole {
 		d.startDecks();
 		f = new faroshuffle();
 		
+		print(d.deckbysuit);
+		System.out.println();
+		print(f.faroShuffleA(d.deckbysuit));
+		System.out.println();
+		print(f.faroShuffleB(d.deckbysuit));
+		
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		
