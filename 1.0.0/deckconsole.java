@@ -3,6 +3,8 @@
 //the cards at the deck and its behavior with de faro
 //perfect shuffle.
 
+//THIS CODE IS NOT COMPLETE
+
 import java.io.*;
 
 class deckconsole {

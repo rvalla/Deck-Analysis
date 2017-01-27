@@ -19,7 +19,7 @@ class faroshuffle {
 		return deck;
 	}
 
-	//Method that returns the deck state after a integer number
+	//Method that returns the deck state after an integer number
 	//of perfect faro shuffles with the top card on top.
 	static String[] farosShuffleA (String[] auxdeck, int times){
 		deckbis = copyDeck(deckbis, auxdeck);
@@ -42,7 +42,7 @@ class faroshuffle {
 		return deck;
 	}
 
-	//Method that returns the deck state after a integer number
+	//Method that returns the deck state after an integer number
 	//of perfect faro shuffles with the top card at second position.
 	static String[] farosShuffleB (String[] auxdeck, int times){
 		deckbis = copyDeck(deckbis, auxdeck);
@@ -53,6 +53,8 @@ class faroshuffle {
 		return deck;
 	}
 	
+	//Method that returns the deck state just before a perfect
+	//faro shuffle with the top card on top.
 	static String[] antiFaroA (String[] auxdeck){
 		int aux;
 		for (int i = 0; i < deck.length/2; i++){
@@ -63,6 +65,8 @@ class faroshuffle {
 		return deckbis;
 	}
 
+	//Method that returns the deck state before an integer number
+	//of perfect faro shuffles with the top card on top.
 	static String[] antiFarosA (String[] auxdeck, int times){
 		deck = copyDeck(deck, auxdeck);
 		for(int i = 0; i < times; i++){
@@ -72,6 +76,8 @@ class faroshuffle {
 		return deckbis;
 	}
 	
+	//Method that returns the deck state just before a perfect
+	//faro shuffle with the top card at second position.
 	static String[] antiFaroB (String[] auxdeck){
 		int aux;
 		for (int i = 0; i < deck.length/2; i++){
@@ -82,6 +88,8 @@ class faroshuffle {
 		return deckbis;
 	}
 
+	//Method that returns the deck state before an integer number
+	//of perfect faro shuffles with the top card at second position.
 	static String[] antiFarosB (String[] auxdeck, int times){
 		deck = copyDeck(deck, auxdeck);
 		for(int i = 0; i < times; i++){
