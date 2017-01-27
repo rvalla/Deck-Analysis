@@ -99,9 +99,17 @@ class faroshuffle {
 		return deck;
 	}
 	
+	//Method that track a card and returns its position in the deck
+	//after a perfect faro shuffle with the top card on top.
+	static int trackCardA (int initPos){
+		int endPos;
+		
+		return endPos;
+	}
+	
 	//Method to copy the state of the second deck (deckbis) in
 	//the first one (deck).
-	static String[] copyDeck(String[] deck, String[] deckbis){
+	static String[] copyDeck (String[] deck, String[] deckbis){
 		if (deck.length == deckbis.length){
 			for (int i = 0; i < deck.length; i++){
 				deck[i] = deckbis[i];
@@ -112,6 +120,17 @@ class faroshuffle {
 			}
 		}
 		return deck;
+	}
+	
+	//Method to evaluate positions on the deck.
+	static boolean isPositionValid (int position){
+		boolean valid;
+		if (position > 0 && position < 53){
+			valid = true;
+		} else {
+			valid = false;
+		}
+		return valid;
 	}
 	
 }
