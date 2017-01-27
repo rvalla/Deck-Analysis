@@ -99,11 +99,18 @@ class faroshuffle {
 		return deck;
 	}
 	
-	//Method that track a card and returns its position in the deck
+	//Method that track a card and returns its position in the deck (0-51)
 	//after a perfect faro shuffle with the top card on top.
 	static int trackCardA (int initPos){
-		int endPos;
-		
+		int endPos = -1;
+		if (isPositionValid(initPos)==true){
+			if (initPos < 27){
+				endPos = 2*initPos;
+			} else {
+				endPos = 2*initPos + 1;
+			}
+			
+		}
 		return endPos;
 	}
 	
@@ -125,7 +132,7 @@ class faroshuffle {
 	//Method to evaluate positions on the deck.
 	static boolean isPositionValid (int position){
 		boolean valid;
-		if (position > 0 && position < 53){
+		if (position > -1 && position < 52){
 			valid = true;
 		} else {
 			valid = false;

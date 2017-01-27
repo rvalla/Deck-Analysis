@@ -38,9 +38,16 @@ class deckconsole {
 		
 		print(d.deckbysuit);
 		System.out.println();
-		print(f.farosShuffleB(d.deckbysuit, 3));
+		print(f.faroShuffleA(d.deckbysuit));
 		System.out.println();
-		print(f.antiFarosB(f.farosShuffleB(d.deckbysuit, 3), 3));
+		System.out.println(f.trackCardA(0));
+		System.out.println();
+		System.out.println(f.trackCardA(10));
+		System.out.println();
+		System.out.println(f.trackCardA(26));
+		System.out.println();
+	
+	
 		System.out.println();
 		
 		InputStreamReader isr = new InputStreamReader(System.in);
@@ -55,65 +62,10 @@ class deckconsole {
 		datos[0] = Integer.parseInt(conjuntodatos[0]);
 		datos[1] = Integer.parseInt(conjuntodatos[1]);
 		
-		if (evaluarDatos(datos) == true){
-		//	ordenarBaraja(barajarv, datos);
-		} else {
-			System.out.println();
-			System.out.println("Los parámetros no pueden procesarse");
-			System.out.println();
-			deckconsole();
-		}
 		
-		//print(barajarv);
-		
+	
 		exit();
 	
-	}
-	
-	static boolean evaluarDatos(int[] input){
-		
-		if (esCoprimo(input[0], 52) == false){
-			return false;
-		} else {
-			if (input[1] > 0 && input[1] < 4){
-				return true;
-			} else {
-				return false;
-			}
-		}
-		
-	}
-	
-	static boolean esCoprimo(int u, int v) {
-   		// If both numbers are even, then they are not coprime.
-    	if (((u | v) & 1) == 0) return false;
-
-	    // Now at least one number is odd. Eliminate all the factors of 2 from u.
-    	while ((u & 1) == 0) u >>= 1;
-
-		// One is coprime with everything else by definition.
-		if (u == 1) return true;
-
-    	do {
-        	// Eliminate all the factors of 2 from v, because we know that u and v do not have any 2's in common.
-        	while ((v & 1) == 0) v >>= 1;
-
-        	// One is coprime with everything else by definition.
-        	if (v == 1) return true;
-
-        	// Swap if necessary to ensure that v >= u.
-        	if (u > v) {
-            	int t = v;
-            	v = u;
-            	u = t;
-        	}
-
-        	// We know that GCD(u, v) = GCD(u, v - u).
-        	v -= u;
-    	} while (v != 0);
-
-    	// When we reach here, we have v = 0 and GCD(u, v) = current value of u, which is greater than 1.
-    	return false;
 	}
 	
 	static void print (String[] input){
