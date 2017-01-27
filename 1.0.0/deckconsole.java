@@ -38,15 +38,13 @@ class deckconsole {
 		
 		print(d.deckbysuit);
 		System.out.println();
-		print(f.faroShuffleA(d.deckbysuit));
+		print(f.farosShuffleA(d.deckbysuit, 3));
 		System.out.println();
-		System.out.println("0 - " + f.trackCardA(0));
+		System.out.println("1 - " + f.trackCardsA(1, 3));
 		System.out.println();
-		System.out.println("10 - " + f.trackCardA(10));
+		System.out.println("50 - " + f.trackCardsA(50, 3));
 		System.out.println();
-		System.out.println("26 - " + f.trackCardA(26));
-		System.out.println();
-		System.out.println("51 - " + f.trackCardA(51));
+		System.out.println("51 - " + f.trackCardsA(51, 3));
 	
 		System.out.println();
 		
