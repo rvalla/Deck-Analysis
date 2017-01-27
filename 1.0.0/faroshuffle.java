@@ -104,10 +104,10 @@ class faroshuffle {
 	static int trackCardA (int initPos){
 		int endPos = -1;
 		if (isPositionValid(initPos)==true){
-			if (initPos < 27){
+			if (initPos < 26){
 				endPos = 2*initPos;
 			} else {
-				endPos = 2*initPos + 1;
+				endPos = 2*initPos - 51;
 			}
 			
 		}
