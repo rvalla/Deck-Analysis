@@ -11,10 +11,11 @@ class faroshuffle {
 	//faro shuffle with the top card on top.
 	static String[] faroShuffleA (String[] auxdeck){
 		int aux;
-		for (int i = 0; i < auxdeck.length/2; i++){
+		int deckhalf = auxdeck.length/2;
+		for (int i = 0; i < deckhalf; i++){
 			aux = 2*i;
 			deck[aux] = auxdeck[i];
-			deck[aux + 1] = auxdeck[26 + i];
+			deck[aux + 1] = auxdeck[deckhalf + i];
 		}
 		return deck;
 	}
@@ -34,10 +35,11 @@ class faroshuffle {
 	//faro shuffle with the top card at second position.
 	static String[] faroShuffleB (String[] auxdeck){
 		int aux;
-		for (int i = 0; i < auxdeck.length/2; i++){
+		int deckhalf = auxdeck.length/2;
+		for (int i = 0; i < deckhalf; i++){
 			aux = 2*i;
 			deck[aux + 1] = auxdeck[i];
-			deck[aux] = auxdeck[26 + i];
+			deck[aux] = auxdeck[deckhalf + i];
 		}
 		return deck;
 	}
@@ -57,10 +59,11 @@ class faroshuffle {
 	//faro shuffle with the top card on top.
 	static String[] antiFaroA (String[] auxdeck){
 		int aux;
-		for (int i = 0; i < deck.length/2; i++){
+		int deckhalf = auxdeck.length/2;
+		for (int i = 0; i < deckhalf; i++){
 			aux = 2*i;
 			deckbis[i] = auxdeck[aux];
-			deckbis[i + 26] = auxdeck[aux + 1];
+			deckbis[i + deckhalf] = auxdeck[aux + 1];
 		}
 		return deckbis;
 	}
@@ -80,9 +83,10 @@ class faroshuffle {
 	//faro shuffle with the top card at second position.
 	static String[] antiFaroB (String[] auxdeck){
 		int aux;
-		for (int i = 0; i < deck.length/2; i++){
+		int deckhalf = auxdeck.length/2;
+		for (int i = 0; i < deckhalf; i++){
 			aux = 2*i;
-			deckbis[i + 26] = auxdeck[aux];
+			deckbis[i + deckhalf] = auxdeck[aux];
 			deckbis[i] = auxdeck[aux + 1];
 		}
 		return deckbis;
@@ -101,15 +105,13 @@ class faroshuffle {
 	
 	//Method that track a card and returns its position in the deck (0-51)
 	//after a perfect faro shuffle with the top card on top.
-	static int trackCardA (int initPos){
+	static int trackCardA (int initPos, int decksize){
 		int endPos = -1;
-		if (isPositionValid(initPos)==true){
-			if (initPos < 26){
-				endPos = 2*initPos;
-			} else {
-				endPos = 2*initPos - 51;
-			}
-			
+		int deckhalf = decksize/2;
+		if (initPos < deckhalf){
+			endPos = 2*initPos;
+		} else {
+			endPos = 2*initPos - decksize + 1;
 		}
 		return endPos;
 	}
@@ -117,27 +119,25 @@ class faroshuffle {
 	//Method that track a card and returns its position in the deck (0-51)
 	//after an integer number of perfect faro shuffles with the top card
 	//on top.
-	static int trackCardsA (int initPos, int times){
+	static int trackCardsA (int initPos, int times, int decksize){
 		int endPos = -1;
 		int aux = initPos;
 		for (int i = 0; i < times; i++){
-			endPos = trackCardA(aux);
+			endPos = trackCardA(aux, decksize);
 			aux = endPos;
 		}
 		return endPos;
 	}
 	
-	//Method that track a card and returns its position in the deck (0-51)
+	//Method that track a card and returns its position in the deck (0-decksize)
 	//after a perfect faro shuffle with the top card on second position.
-	static int trackCardB (int initPos){
+	static int trackCardB (int initPos, int decksize){
 		int endPos = -1;
-		if (isPositionValid(initPos)==true){
-			if (initPos < 26){
-				endPos = 2*initPos + 1;
-			} else {
-				endPos = 2*initPos - 52;
-			}
-			
+		int deckhalf = decksize/2;
+		if (initPos < deckhalf){
+			endPos = 2*initPos + 1;
+		} else {
+			endPos = 2*initPos - decksize;
 		}
 		return endPos;
 	}
@@ -145,11 +145,11 @@ class faroshuffle {
 	//Method that track a card and returns its position in the deck (0-51)
 	//after an integer number of perfect faro shuffles with the top card
 	//on second position.
-	static int trackCardsB (int initPos, int times){
+	static int trackCardsB (int initPos, int times, int decksize){
 		int endPos = -1;
 		int aux = initPos;
 		for (int i = 0; i < times; i++){
-			endPos = trackCardB(aux);
+			endPos = trackCardB(aux, decksize);
 			aux = endPos;
 		}
 		return endPos;
@@ -168,17 +168,6 @@ class faroshuffle {
 			}
 		}
 		return deck;
-	}
-	
-	//Method to evaluate positions on the deck.
-	static boolean isPositionValid (int position){
-		boolean valid;
-		if (position > -1 && position < 52){
-			valid = true;
-		} else {
-			valid = false;
-		}
-		return valid;
 	}
 	
 }

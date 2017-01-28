@@ -6,21 +6,21 @@ class deckmethods {
 	static String[] deckbysuit;
 	static String[] deckbyorder;
 	static String[] deckbymirror;
-	//String array for an empty deck
-	static String[] deck = new String[52];
 	//String array for suits representation
 	static String[] suits = {" Hea", " Dia", " Spa", " Clu"};
 	
 	//Method to obtain a pseudoaleatory order from a deck using a
-	//52 coprime. Note that if you give as parameter an int which
-	//is not a 52 coprime the returned String array will not be a
-	//deck (it will have repeated or null cards)
+	//deck size coprime. Note that if you give as parameter an int
+	//which is not a deck size coprime the returned String array
+	//will not be a deck (it will have repeated or null cards)
 	static String[] getCoprimeDeck(String[] auxdeck, int coprime){
 		int auxindex;
-		for (int i = 0; i < 52; i++){
-				auxindex = coprime*(i+1)%52 - 1;
+		int decksize = auxdeck.length;
+		String[] deck = new String[decksize];
+		for (int i = 0; i < decksize; i++){
+				auxindex = coprime*(i+1)%decksize - 1;
 				if (auxindex < 0) {
-					auxindex = 51;
+					auxindex = decksize - 1;
 				}
 				deck[auxindex] = auxdeck[i];
 		}

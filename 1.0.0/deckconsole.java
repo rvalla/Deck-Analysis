@@ -40,11 +40,14 @@ class deckconsole {
 		System.out.println();
 		print(f.farosShuffleA(d.deckbysuit, 3));
 		System.out.println();
-		System.out.println("1 - " + f.trackCardsA(1, 3));
+		System.out.println("1 - " + f.trackCardsA(1, 3, 52));
 		System.out.println();
-		System.out.println("50 - " + f.trackCardsA(50, 3));
+		System.out.println("50 - " + f.trackCardsA(50, 3, 52));
 		System.out.println();
-		System.out.println("51 - " + f.trackCardsA(51, 3));
+		System.out.println("51 - " + f.trackCardsA(51, 3, 52));
+	
+		String[] a = {"1", "2", "3", "4"};
+		print(d.getCoprimeDeck(a, 3));
 	
 		System.out.println();
 		
@@ -67,10 +70,11 @@ class deckconsole {
 	}
 	
 	static void print (String[] input){
-	
+		int decksize = input.length;
+		int decksuits = decksize/4;
 		for(int i = 0; i < 4; i++){
-			for (int j = 0; j < 13; j++){
-				System.out.print(input[13*i + j]);
+			for (int j = 0; j < decksuits; j++){
+				System.out.print(input[decksuits*i + j]);
 				System.out.print(", ");
 			}
 			System.out.println();
