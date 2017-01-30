@@ -1,6 +1,6 @@
 //Methods to order, reorder or evaluate a deck of cards
 
-class deckmethods {
+class DeckMethods {
 
 	//String arrays for especial orders of the deck representation
 	static String[] deckbysuit;

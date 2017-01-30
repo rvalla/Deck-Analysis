@@ -3,70 +3,125 @@
 //the cards at the deck and its behavior with de faro
 //perfect shuffle.
 
-//THIS CODE IS NOT COMPLETE
-
 import java.io.*;
 
-class deckconsole {
+class DeckConsole {
 	
-	static deckmethods d;
-	static faroshuffle f;
+	static DeckMethods d;
+	static FaroShuffle f;
 	
 	public static void main (String[] args) throws Exception {
 	
 		System.out.println();
 		System.out.println("////////////////////////////////////////////////");
 		System.out.println("          Deck-Analysis little software");
+		System.out.println("	  http://github.com/rvalla/Deck-Analysis");
 		System.out.println("////////////////////////////////////////////////");		
 		System.out.println();
-		System.out.println("Ingrese un coprimo de 52 'espacio' 1 = xnumeros o 2 = xpalos");
-		System.out.println("o 3 = xpalos invertidos por color");
-		System.out.println("por ejemplo: '7 1' para partir de la baraja ordenada por");
-		System.out.println("números (As de corazones, As de diamate, As de picas, As de");
-		System.out.println("trébol, 2 de corazones, etc) utilizando el 7 como factor.");
+		printHelp();
+		System.out.println("Deck-Analysis will show you the order of your coprime deck +");
+		System.out.println("its state after 1 and 2 perfect faro shuffles. You will see");		
+		System.out.println("the state of a previous deck with an 'anti-faro'.");
 		System.out.println();
-	
-		deckconsole();
+		System.out.println("You can code to adapt the program to your needs!");		
+		System.out.println();
+			
+		DeckConsole();
 			
 	}
 	
-	public static void deckconsole() throws Exception {
+	public static void DeckConsole() throws Exception {
 	
-		d = new deckmethods();
+		d = new DeckMethods();
 		d.startDecks();
-		f = new faroshuffle();
-		
-		print(d.deckbysuit);
-		System.out.println();
-		print(f.farosShuffleA(d.deckbysuit, 3));
-		System.out.println();
-		System.out.println("1 - " + f.trackCardsA(1, 3, 52));
-		System.out.println();
-		System.out.println("50 - " + f.trackCardsA(50, 3, 52));
-		System.out.println();
-		System.out.println("51 - " + f.trackCardsA(51, 3, 52));
-	
-		String[] a = {"1", "2", "3", "4"};
-		print(d.getCoprimeDeck(a, 3));
-	
-		System.out.println();
+		f = new FaroShuffle();
 		
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		
-		String factorytipo;
-		factorytipo = br.readLine();
+		String factorAndType;
+		factorAndType = br.readLine();
 		System.out.println();
 		
-		int[] datos = new int[2];
-		String[] conjuntodatos = factorytipo.split(" ");
-		datos[0] = Integer.parseInt(conjuntodatos[0]);
-		datos[1] = Integer.parseInt(conjuntodatos[1]);
+		if (factorAndType.equals("")){
+			System.out.println("Hey! Please write something next time.");
+			exit();
+		} else {
+			int[] input = new int[2];
+			String[] inputdata = factorAndType.split(" ");
+			try {
+				input[0] = Integer.parseInt(inputdata[0]);
+				input[1] = Integer.parseInt(inputdata[1]);
+				runDecks(input);
+			} catch (Exception e){
+				System.out.println();
+				System.out.println("Error: Input data can not be processed");
+				System.out.println("Try again!");
+				System.out.println();
+				DeckConsole();
+			}
+		}	
 		
-		
-	
 		exit();
 	
+	}
+	
+	static void runDecks (int[] input) throws Exception {
+		String[] deck = new String[52];
+		if (input[1]==1){
+			System.out.println("You ask for a coprime factor of " + String.valueOf(input[0]));
+			System.out.println("and a deck ordered by suits as starting point.");
+			System.out.println();
+			deck = d.getCoprimeDeck(d.deckbysuit, input[0]);
+			runFarosA(deck);
+		} else if (input[1]==2){
+			System.out.println("You ask for a coprime factor of " + String.valueOf(input[0]));
+			System.out.println("and a deck ordered by numbers as starting point.");
+			System.out.println();
+			deck = d.getCoprimeDeck(d.deckbyorder, input[0]);
+			runFarosA(deck);
+		} else if (input[1]==3){
+			System.out.println("You ask for a coprime factor of " + String.valueOf(input[0]));
+			System.out.println("and a deck with inverted order as starting point.");
+			System.out.println();
+			deck = d.getCoprimeDeck(d.deckbymirror, input[0]);
+			runFarosA(deck);
+		} else {
+			System.out.println();
+			System.out.println("REMEMBER:");
+			printHelp();
+			DeckConsole();
+		}
+	}
+	
+	static void runFarosA (String[] deck){
+		System.out.println("-Previous deck: Anti Faro Shuffle");
+		print(f.antiFaroA(deck));
+		System.out.println();
+		System.out.println("-Your coprime deck:");
+		print(deck);
+		System.out.println();
+		System.out.println("-Your coprime deck after a faro shuffle:");
+		print(f.faroShuffleA(deck));
+		System.out.println();
+		System.out.println("-Your coprime deck after 2 faro shuffles:");
+		print(f.farosShuffleA(deck, 2));
+		System.out.println();
+	}
+	
+	static void runFarosB (String[] deck){
+		System.out.println("-Previous deck: Anti Faro Shuffle");
+		print(f.antiFaroB(deck));
+		System.out.println();
+		System.out.println("-Your coprime deck:");
+		print(deck);
+		System.out.println();
+		System.out.println("-Your coprime deck after a faro shuffle:");
+		print(f.faroShuffleB(deck));
+		System.out.println();
+		System.out.println("-Your coprime deck after 2 faro shuffles:");
+		print(f.farosShuffleB(deck, 2));
+		System.out.println();
 	}
 	
 	static void print (String[] input){
@@ -82,19 +137,30 @@ class deckconsole {
 	
 	}
 	
-	public static void exit () throws Exception{
+	static void printHelp (){
+		System.out.println("Input 2 numbers separated by spaces.");
+		System.out.println("First one should be a decksize coprime (52), e.g. 11.");
+		System.out.println("The second one allows you to select the original deck:");
+		System.out.println("1: deck ordered by suits (1-13 hearts, 1-13 diamonds, 1-13");
+		System.out.println("spades, 1-13 clubs.");
+		System.out.println("2: deck ordered by numbers (1 hearts, 1 diamonds, 1 spades");
+		System.out.println("1 clubs, 2 hearts, 2 diamonds, etc)");
+		System.out.println("3: deck ordered by suits with black cards in reverse order.");
+		System.out.println();
+	}
+	
+	static void exit () throws Exception{
 		
 		InputStreamReader isr2 = new InputStreamReader(System.in);
 		BufferedReader br2 = new BufferedReader(isr2);
 
 		System.out.println();
-		System.out.println("Para correr el programa de nuevo tipear 'n'");
+		System.out.println("To run the software again type 'new'");
 		String ex;
 		ex = br2.readLine();
-		if (ex.equals("n")) {
-			System.out.println(); 
-			System.out.println(); 			
-			deckconsole();
+		if (ex.equals("new")) {
+			System.out.println(); 		
+			DeckConsole();
 		} else {
 			System.exit(0);
 		}

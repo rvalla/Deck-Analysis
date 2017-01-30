@@ -1,7 +1,7 @@
 //Methods to represent the behavior of the deck
 //with de 'Faro shuffle'
 
-class faroshuffle {
+class FaroShuffle {
 
 	//String arrays for deck representation
 	static String[] deck = new String[52];
