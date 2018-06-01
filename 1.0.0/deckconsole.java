@@ -13,10 +13,10 @@ class DeckConsole {
 	public static void main (String[] args) throws Exception {
 	
 		System.out.println();
-		System.out.println("////////////////////////////////////////////////");
+		System.out.println("//////////////////////////////////////////////////////////");
 		System.out.println("          Deck-Analysis little software");
 		System.out.println("	  http://github.com/rvalla/Deck-Analysis");
-		System.out.println("////////////////////////////////////////////////");		
+		System.out.println("//////////////////////////////////////////////////////////");		
 		System.out.println();
 		printHelp();
 		System.out.println("Deck-Analysis will show you the order of your coprime deck +");
