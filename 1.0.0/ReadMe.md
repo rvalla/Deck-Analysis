@@ -1,3 +1,4 @@
+![icon](https://gitlab.com/rodrigovalla/deck-analysis/-/raw/master/assets/img/icon_64.png)
 # Deck-Analysis
 
 In this software, the deck is represented by a string array. By default is set with 52

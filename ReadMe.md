@@ -1,3 +1,4 @@
+![icon](https://gitlab.com/rodrigovalla/deck-analysis/-/raw/master/assets/img/icon_64.png)
 # Deck-Analysis
 
 Deck-Analysis is a very little piece of software to evaluate possible orders for the cards
