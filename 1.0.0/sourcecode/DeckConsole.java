@@ -6,43 +6,43 @@
 import java.io.*;
 
 class DeckConsole {
-	
+
 	static DeckMethods d;
 	static FaroShuffle f;
-	
+
 	public static void main (String[] args) throws Exception {
-	
+
 		System.out.println();
 		System.out.println("//////////////////////////////////////////////////////////");
 		System.out.println("          Deck-Analysis little software");
-		System.out.println("	  http://github.com/rvalla/Deck-Analysis");
-		System.out.println("//////////////////////////////////////////////////////////");		
+		System.out.println("	  https://gitlab.com/rodrigovalla/deck-analysis");
+		System.out.println("//////////////////////////////////////////////////////////");
 		System.out.println();
 		printHelp();
 		System.out.println("Deck-Analysis will show you the order of your coprime deck +");
-		System.out.println("its state after 1 and 2 perfect faro shuffles. You will see");		
+		System.out.println("its state after 1 and 2 perfect faro shuffles. You will see");
 		System.out.println("the state of a previous deck with an 'anti-faro'.");
 		System.out.println();
-		System.out.println("You can code to adapt the program to your needs!");		
+		System.out.println("You can code to adapt the program to your needs!");
 		System.out.println();
-			
+
 		DeckConsole();
-			
+
 	}
-	
+
 	public static void DeckConsole() throws Exception {
-	
+
 		d = new DeckMethods();
 		d.startDecks();
 		f = new FaroShuffle();
-		
+
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
-		
+
 		String factorAndType;
 		factorAndType = br.readLine();
 		System.out.println();
-		
+
 		if (factorAndType.equals("")){
 			System.out.println("Hey! Please write something next time.");
 			exit();
@@ -60,12 +60,12 @@ class DeckConsole {
 				System.out.println();
 				DeckConsole();
 			}
-		}	
-		
+		}
+
 		exit();
-	
+
 	}
-	
+
 	static void runDecks (int[] input) throws Exception {
 		String[] deck = new String[52];
 		if (input[1]==1){
@@ -93,7 +93,7 @@ class DeckConsole {
 			DeckConsole();
 		}
 	}
-	
+
 	static void runFarosA (String[] deck){
 		System.out.println("-Previous deck: Anti Faro Shuffle");
 		print(f.antiFaroA(deck));
@@ -108,7 +108,7 @@ class DeckConsole {
 		print(f.farosShuffleA(deck, 2));
 		System.out.println();
 	}
-	
+
 	static void runFarosB (String[] deck){
 		System.out.println("-Previous deck: Anti Faro Shuffle");
 		print(f.antiFaroB(deck));
@@ -123,7 +123,7 @@ class DeckConsole {
 		print(f.farosShuffleB(deck, 2));
 		System.out.println();
 	}
-	
+
 	static void print (String[] input){
 		int decksize = input.length;
 		int decksuits = decksize/4;
@@ -134,9 +134,9 @@ class DeckConsole {
 			}
 			System.out.println();
 		}
-	
+
 	}
-	
+
 	static void printHelp (){
 		System.out.println("Input 2 numbers separated by spaces.");
 		System.out.println("First one should be a decksize coprime (52), e.g. 11.");
@@ -148,9 +148,9 @@ class DeckConsole {
 		System.out.println("3: deck ordered by suits with black cards in reverse order.");
 		System.out.println();
 	}
-	
+
 	static void exit () throws Exception{
-		
+
 		InputStreamReader isr2 = new InputStreamReader(System.in);
 		BufferedReader br2 = new BufferedReader(isr2);
 
@@ -159,7 +159,7 @@ class DeckConsole {
 		String ex;
 		ex = br2.readLine();
 		if (ex.equals("new")) {
-			System.out.println(); 		
+			System.out.println();
 			DeckConsole();
 		} else {
 			System.exit(0);

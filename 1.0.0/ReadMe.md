@@ -1,6 +1,6 @@
 # Deck-Analysis
 
-In this software, the deck is represented by a string array. By default is set which 52
+In this software, the deck is represented by a string array. By default is set with 52
 elements (as the poker deck without jokers), but the methods should run with any even number.
 
 ### About 'deckmethods'
@@ -36,4 +36,5 @@ an integer number of perfect faro shuffles leaving the top card on second positi
 
 Version 1.0.0 - January 2017
 
-Rodrigo Valla
+Feel free to contact me by [mail](mailto:rodrigovalla@protonmail.ch) or reach me in
+[telegram](https://t.me/rvalla) or [mastodon](https://fosstodon.org/@rvalla).
